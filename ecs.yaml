@@ -46,8 +46,14 @@ parameters:
             - app/User.php
             - tests/Feature/ExampleTest.php
             - app/Providers/AuthServiceProvider.php
+            - app/Http/Controllers/MarketController.php
 
-        # Ignore what is not owned - laravel standard
+        # Work in progress
+        # todo: remove once all methods are implemented
+        PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer:
+            - app/Http/Controllers/MarketController.php
+
+      # Ignore what is not owned - laravel standard
         PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer:
             - app/Providers/RouteServiceProvider.php
         PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer:
