@@ -1,0 +1,76 @@
+parameters:
+    sets:
+        - 'psr12'
+        - 'php70'
+        - 'php71'
+        - 'symplify'
+        - 'common'
+        - 'clean-code'
+        - 'dead-code'
+
+    line_ending: "\n"
+
+    # 4 spaces
+    indentation: "    "
+
+    skip:
+        Symplify\CodingStandard\Sniffs\Architecture\DuplicatedClassShortNameSniff: null
+        # Allow snake_case for tests
+        PHP_CodeSniffer\Standards\Generic\Sniffs\NamingConventions\CamelCapsFunctionNameSniff:
+            - tests/**
+        # Ignore what is not owned - Laravel's TestCase class does not start with 'Abstract'
+        Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff:
+            - tests/TestCase.php
+        # Ignore what is not owned - Laravel's traits do not end with 'Trait'
+        Symplify\CodingStandard\Sniffs\Naming\TraitNameSniff:
+            - tests/**
+        # Ignore what is not owned - CommentedOutCodeSniff
+        Symplify\CodingStandard\Sniffs\Debug\CommentedOutCodeSniff.Found:
+            - app/Console/Kernel.php
+        # Ignore what is not owned - Leave the references as they are
+        SlevomatCodingStandard\Sniffs\Namespaces\ReferenceUsedNamesOnlySniff.ReferenceViaFullyQualifiedName:
+            - app/Http/Controllers/Auth/RegisterController.php
+            - app/Http/Kernel.php
+            - app/Exceptions/Handler.php
+            - app/User.php
+            - app/Http/Middleware/RedirectIfAuthenticated.php
+            - app/Http/Middleware/Authenticate.php
+            - app/Console/Kernel.php
+            - tests/CreatesApplication.php
+
+          # Ignore what is not owned - boilerplate code
+          # use Illuminate\Contracts\Auth\MustVerifyEmail; - will probably be required
+          # use Illuminate\Foundation\Testing\RefreshDatabase;  - will probably be required
+          # use Illuminate\Support\Facades\Gate;  - will probably be required
+        PhpCsFixer\Fixer\Import\NoUnusedImportsFixer:
+            - app/User.php
+            - tests/Feature/ExampleTest.php
+            - app/Providers/AuthServiceProvider.php
+
+        # Ignore what is not owned - laravel standard
+        PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer:
+            - app/Providers/RouteServiceProvider.php
+        PhpCsFixer\Fixer\ClassNotation\OrderedClassElementsFixer:
+            - app/Providers/RouteServiceProvider.php
+
+        # Ignore what is not owned - laravel explanation docTags
+        PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer:
+            - app/Http/Middleware/RedirectIfAuthenticated.php
+            - app/Exceptions/Handler.php
+
+
+      # Ignore what is not owned - laravel explanation docTags
+        SlevomatCodingStandard\Sniffs\Whitespaces\DuplicateSpacesSniff.DuplicateSpaces:
+            - app/Exceptions/Handler.php
+
+        # Ignore what is not owned - laravel boiler plate
+        SlevomatCodingStandard\Sniffs\Commenting\EmptyCommentSniff.EmptyComment:
+            - app/Exceptions/Handler.php
+            - app/Providers/RouteServiceProvider.php
+            - app/Providers/EventServiceProvider.php
+            - app/Providers/AppServiceProvider.php
+            - app/Http/Middleware/VerifyCsrfToken.php
+            - app/Http/Middleware/EncryptCookies.php
+            - app/Http/Middleware/CheckForMaintenanceMode.php
+            - app/Console/Kernel.php
+            - app/Providers/AuthServiceProvider.php
