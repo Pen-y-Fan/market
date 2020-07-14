@@ -16,15 +16,16 @@ class MarketController extends Controller
      */
     public function index(): View
     {
-        $markets = Market::all();
+        $markets = Market::orderBy('name', 'asc')->paginate(9);
         return view('markets.index', ['markets' => $markets]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): view
     {
+        return view('markets.create');
     }
 
     /**
@@ -32,13 +33,21 @@ class MarketController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'bail|required|unique:markets|max:255',
+            'website' => 'bail|required',
+            'city' => 'bail|required',
+        ]);
+        Market::create($request->all());
+        return redirect('markets');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Market $market)
+    public function show(Market $market): View
     {
+        return view('markets.show', ['market' => $market]);
     }
 
     /**
