@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
+// php artisan make:controller -m Farm FarmController
 class MarketController extends Controller
 {
     /**
@@ -33,12 +34,12 @@ class MarketController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $market = $this->validate($request, [
             'name' => 'bail|required|unique:markets|max:255',
             'website' => 'bail|required',
             'city' => 'bail|required',
         ]);
-        Market::create($request->all());
+        Market::create($market);
         return redirect('markets');
     }
 

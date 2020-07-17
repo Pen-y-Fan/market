@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('markets', 'MarketController');
+Route::resource('farms', 'FarmController');
 
 Route::get('/', function () {
     return view('welcome');
