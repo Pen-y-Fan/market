@@ -6,7 +6,9 @@ namespace App\Http\Controllers;
 
 use App\Farm;
 use App\Market;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class FarmController extends Controller
 {
@@ -29,6 +31,7 @@ class FarmController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
@@ -54,6 +57,7 @@ class FarmController extends Controller
      */
     public function edit(Farm $farm)
     {
+        /** @var Market $markets */
         $markets = Market::select('name', 'id')->sortBy('name');
 
         return view('farms.edit', compact('farm', 'markets'));
@@ -71,8 +75,10 @@ class FarmController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @throws Exception
      */
     public function destroy(Farm $farm): void
     {
+        $farm->delete();
     }
 }
