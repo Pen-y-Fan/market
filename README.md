@@ -2,8 +2,8 @@
 
 Based on a code along of [Code School: From Form to Table with Laravel](https://app.pluralsight.com/library/courses/code-school-from-form-to-table-with-laravel/table-of-contents)
 
-- The majority of the code along is complete, with the exception to the final demo, which had a bootstrap layout.
-- Instead of finishing the code along I wrote testes:
+- The majority of the code along is complete, exception the final demo, which had a bootstrap layout.
+- Instead of finishing the code along I wrote tests:
   - To prove the **Farm** and **Market** relationship is working
   - Test what happens if a market is deleted after a relationship was made.
 
