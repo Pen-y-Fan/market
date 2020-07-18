@@ -1,85 +1,152 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Market
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Based on a code along of [Code School: From Form to Table with Laravel](https://app.pluralsight.com/library/courses/code-school-from-form-to-table-with-laravel/table-of-contents)
 
-## About Laravel
+- The majority of the code along is complete, with the exception to the final demo, which had a bootstrap layout.
+- Instead of finishing the code along I wrote testes:
+  - To prove the **Farm** and **Market** relationship is working
+  - Test what happens if a market is deleted after a relationship was made.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This is a laravel 7 project, the installation is similar to laravel.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The project uses:
 
-## Learning Laravel
+- [PHP 7.2+](https://www.php.net/downloads.php)
+- [Composer](https://getcomposer.org)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Recommended:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [Git](https://git-scm.com/downloads)
 
-## Laravel Sponsors
+Clone the repository
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```sh
+git clone git@github.com:pen-y-fan/market.git
+```
 
-### Premium Partners
+or
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
+```shell script
+git clone https://github.com/pen-y-fan/market.git
+```
 
-### Community Sponsors
+Install all the dependencies using composer:
 
-<a href="https://op.gg"><img src="http://opgg-static.akamaized.net/icon/t.rectangle.png" width="150"></a>
+```sh
+cd .\market
+composer install
+```
 
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [云软科技](http://www.yunruan.ltd/)
+Configure **.env**, e.g.
 
-## Contributing
+```shell script
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=market
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Run the tests:
 
-## Code of Conduct
+```shell script
+composer test
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**Note:** the tests run using sqlite in memory, the `pdo_sqlite` extension needs to be enabled.
 
-## Security Vulnerabilities
+## Dependencies
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+The project uses composer to install:
 
-## License
+- [PHPUnit](https://phpunit.de/)
+- [PHPStan](https://github.com/phpstan/phpstan)
+- [Easy Coding Standard (ECS)](https://github.com/symplify/easy-coding-standard) 
+- [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/wiki)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Folders
+
+Project files and folders of note.
+
+- `app` 
+    - Contains the **Farm** and **Market** model class
+- `app/Http/Controllers`
+    - Contains the **FarmController** and **MarketController**
+- `views`
+    - `farms`, `markets` and `layouts` blade templates
+- `routes`
+   - **web.php** routing file
+- `tests/Feature` 
+    - **FarmTest** confirms the relationship between Farm and Market
+
+## Testing
+
+PHPUnit can be used to run tests, to help this can be run using a composer script. To run the unit tests, from the root of
+ the project run:
+
+```shell script
+composer test
+```
+
+On Windows a batch file has been created, similar to an alias on Linux/Mac (e.g. `alias pu="composer test"`), the same
+ PHPUnit `composer test` can be run:
+
+```shell script
+pu
+```
+
+## Code Standard
+
+Easy Coding Standard (ECS) is used to check for style and code standards,
+ **[PSR-12](https://www.php-fig.org/psr/psr-12/)** is used. Tip: Only periodically run ECS, when tests are green, to
+ keep the focus on writing tests, refactoring the code and adding new features.
+
+### Check Code
+
+To check code, but not fix errors:
+
+```shell script
+composer check-cs
+``` 
+
+On Windows a batch file has been created, similar to an alias on Linux/Mac (e.g. `alias cc="composer check-cs"`), the
+ same ECS `composer check-cs` can be run:
+
+```shell script
+cc
+```
+
+### Fix Code
+
+ECS provides many code fixes, if advised to run --fix, the following script can be run:
+
+```shell script
+composer fix-cs
+```
+
+On Windows a batch file has been created, similar to an alias on Linux/Mac (e.g. `alias fc="composer fix-cs"`), the same
+ ECS `composer fix-cs` can be run:
+
+```shell script
+fc
+```
+
+## Static Analysis
+
+PHPStan is used to run static analysis checks. As the code is constantly being refactored only run static analysis
+  checks once the chapter is complete. Tip: Only periodically run PHPStan, when tests are green, to keep the focus on
+   writing tests, refactoring the code and adding new features.
+
+```shell script
+composer phpstan
+```
+
+On Windows a batch file has been created, similar to an alias on Linux/Mac (e.g. `alias ps="composer phpstan"`), the
+ same PHPStan `composer phpstan` can be run:
+
+```shell script
+ps
+```
